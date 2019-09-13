@@ -21,6 +21,22 @@ export default function NasaPhoto() {
         console.log("Error! Error!", error);
       });
   }, [date]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.nasa.gov/planetary/apod?api_key=h1pcSvDdtUjcu8xxWa09Xv8REkEhHC8yMVh4htnt`
+      )
+      .then(response => {
+        const info = response.data;
+        console.log(info);
+        setData(info);
+      })
+      .catch(error => {
+        console.log("Error! Error!", error);
+      });
+  }, []);
+
   return (
     <Container>
       <Row>
