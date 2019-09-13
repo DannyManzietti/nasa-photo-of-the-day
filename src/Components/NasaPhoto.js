@@ -5,11 +5,12 @@ import { Container, Row } from "reactstrap";
 
 export default function NasaPhoto() {
   const [data, setData] = useState([]);
+  const [date, setDates] = useState();
 
   useEffect(() => {
     axios
       .get(
-        "https://api.nasa.gov/planetary/apod?api_key=h1pcSvDdtUjcu8xxWa09Xv8REkEhHC8yMVh4htnt"
+        `https://api.nasa.gov/planetary/apod?api_key=h1pcSvDdtUjcu8xxWa09Xv8REkEhHC8yMVh4htnt&date=${date}`
       )
       .then(response => {
         const info = response.data;
@@ -19,12 +20,19 @@ export default function NasaPhoto() {
       .catch(error => {
         console.log("Error! Error!", error);
       });
-  }, []);
-
+  }, [date]);
   return (
     <Container>
       <Row>
         <div>
+          <form>
+            <input
+              className="cal"
+              onChange={event => setDates(event.target.value)}
+              type={"date"}
+              style={{ marginBottom: "1rem", marginTop: "1rem" }}
+            ></input>
+          </form>
           <NasaCard
             title={data.title}
             date={data.date}

@@ -8,19 +8,14 @@ import {
   CardSubtitle,
   Button,
   Col,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "reactstrap";
 import Toggle from "./Toggle";
 
 const NasaCard = props => {
   return (
     <Col>
+      <h1>NASA Photo of the Day</h1>
       <Card>
-        <h1>NASA Photo of the Day</h1>
-        <Modal />
         <h3>{props.title}</h3>
         <CardImg
           className="img"
